@@ -1,4 +1,3 @@
-/* filepath: /Users/joshuacarter/webdev/crazy-word/src/style.css */
 :root {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
@@ -28,12 +27,10 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px; /* Keep a reasonable minimum */
+  min-width: 320px;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  padding: 1rem; /* Add some base padding */
-  box-sizing: border-box;
 }
 
 /* Cyberpunk background */
@@ -48,14 +45,14 @@ body::before {
   background: 
     linear-gradient(45deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%, transparent),
     linear-gradient(-45deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
-  background-size: clamp(25px, 5vw, 50px) clamp(25px, 5vw, 50px); /* Fluid background size */
+  background-size: 50px 50px;
   animation: grid-move 20s linear infinite;
 }
 
 /* Animated grid background */
 @keyframes grid-move {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(clamp(25px, 5vw, 50px), clamp(25px, 5vw, 50px)); } /* Adjust animation to match fluid size */
+  100% { transform: translate(50px, 50px); }
 }
 
 /* Synthwave gradient overlay */
@@ -71,30 +68,16 @@ body::after {
   pointer-events: none;
 }
 
-.card {
-  padding: clamp(1em, 2.5vw, 2em); /* Fluid padding */
-}
-
-#app {
-  width: min(100%, 1280px); /* Takes full width up to 1280px */
-  margin: 0 auto;
-  padding: clamp(1rem, 5vw, 2rem); /* Fluid padding */
-  text-align: center;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: clamp(0px, (100vw - 320px) / (1280 - 320) * 20px, 20px); /* Fluid border radius - 0 on small, 20px on large */
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  box-shadow: 
-    0 0 50px rgba(0, 255, 255, 0.1),
-    inset 0 0 50px rgba(255, 0, 255, 0.05);
-  box-sizing: border-box;
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
 button {
   border-radius: 8px;
   border: 2px solid #00ffff;
-  padding: clamp(0.6em, 1.5vw, 1em) clamp(1em, 2.5vw, 1.5em); /* Fluid padding */
-  font-size: clamp(0.9em, 2vw, 1.1em); /* Fluid font size */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
@@ -102,10 +85,51 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: clamp(0.5px, 0.15vw, 1px); /* Fluid letter spacing */
+  letter-spacing: 1px;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-  min-height: 44px; /* Accessibility */
-  min-width: 44px; /* Accessibility */
+}
+button:hover {
+  border-color: #ff00ff;
+  color: #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+  transform: translateY(-2px);
+}
+button:active {
+  transform: translateY(0);
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 
+    0 0 50px rgba(0, 255, 255, 0.1),
+    inset 0 0 50px rgba(255, 0, 255, 0.05);
+}
+
+button {
+  border-radius: 8px;
+  border: 2px solid #00ffff;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+  color: #00ffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 button:hover {
   border-color: #ff00ff;
@@ -119,40 +143,29 @@ button:active {
 
 h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.8em, 5vw, 2.5em); /* Fluid font size */
+  font-size: 2.5em;
   font-weight: 700;
   margin: 0.5em 0;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.5vw, 3px); /* Fluid letter spacing */
+  letter-spacing: 3px;
   color: #00ffff;
   text-shadow: 
     0 0 10px #00ffff,
     0 0 20px #00ffff,
     0 0 30px #00ffff;
-  line-height: 1.2;
 }
 
 h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(2em, 6vw, 3em); /* Fluid font size */
-  margin: 0.5em 0;
+  font-size: 3em;
+  margin: 0px;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.3vw, 2px); /* Fluid letter spacing */
+  letter-spacing: 2px;
   color: #ff00ff;
   text-shadow: 
     0 0 10px #ff00ff,
     0 0 20px #ff00ff,
     0 0 30px #ff00ff;
-  line-height: 1.2;
-}
-
-/* General input styling (can be overridden in components if needed) */
-input[type="input"] {
-    font-size: clamp(0.9em, 2vw, 1.1em); /* Fluid font size */
-    padding: clamp(0.8em, 2vw, 1em); /* Fluid padding */
-    width: 100%; /* Default to full width, parent can constrain */
-    box-sizing: border-box;
-    min-height: 44px; /* Accessibility */
 }
 
 /* Cyberpunk neon colors - original palette */
@@ -175,15 +188,211 @@ input[type="input"] {
 }
 
 .neon {
-  /* This effect is hard to make truly fluid without JS or many classes. */
-  /* Keeping the more complex version as a baseline. */
-  /* Could be simplified if it's too much on small screens. */
-  text-shadow: 0 0 7px var(--color1), 0 0 15px var(--color2),
-    0 0 25px var(--color3), 0 0 40px var(--color4), 0 0 50px var(--color4);
+  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
+    0 0 40px var(--color3), 0 0 80px var(--color4), 0 0 100px var(--color4);
 }
 
-/* Styles for .form-container and .word-item would typically be in their respective components */
-/* or defined here if they are truly global utility classes. */
-/* For now, assuming they will be handled/refactored in component-specific styles or are already general enough. */
+/* =================== MOBILE RESPONSIVE =================== */
 
-/* REMOVE ALL MEDIA QUERIES FROM THIS POINT DOWN */
+/* Tablet/iPad styles (768px - 1024px) */
+@media (max-width: 1024px) {
+  #app {
+    max-width: 90%;
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  h1 {
+    font-size: 2.2em;
+    letter-spacing: 2px;
+  }
+  
+  h2 {
+    font-size: 2.5em;
+    letter-spacing: 1.5px;
+  }
+  
+  button {
+    padding: 0.7em 1.4em;
+    font-size: 1.1em;
+  }
+  
+  .form-container {
+    gap: 1rem;
+  }
+  
+  input[type="input"] {
+    font-size: 1.1em;
+    padding: 0.8em;
+  }
+}
+
+/* Mobile phone styles (320px - 768px) */
+@media (max-width: 768px) {
+  body {
+    min-width: 100%;
+    padding: 0;
+  }
+  
+  #app {
+    max-width: 95%;
+    padding: 1rem;
+    margin: 0.5rem auto;
+    border-radius: 15px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    letter-spacing: 1px;
+    margin: 0.3em 0;
+  }
+  
+  h2 {
+    font-size: 2em;
+    letter-spacing: 1px;
+    margin: 0.2em 0;
+  }
+  
+  button {
+    padding: 0.8em 1.2em;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    min-height: 48px; /* Touch-friendly minimum */
+  }
+  
+  .form-container {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .form-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  input[type="input"] {
+    font-size: 1em;
+    padding: 1em;
+    min-height: 48px; /* Touch-friendly minimum */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .card {
+    padding: 1em;
+  }
+  
+  /* Make word list items more touch-friendly */
+  .word-item {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    font-size: 1.1em;
+  }
+  
+  /* Adjust cyberpunk background for mobile */
+  body::before {
+    background-size: 30px 30px;
+  }
+  
+  /* Reduce neon effects on mobile for better readability */
+  .neon {
+    text-shadow: 0 0 5px var(--color1), 0 0 10px var(--color2),
+      0 0 20px var(--color3), 0 0 40px var(--color4);
+  }
+}
+
+/* Small phone styles (320px - 480px) */
+@media (max-width: 480px) {
+  #app {
+    max-width: 98%;
+    padding: 0.8rem;
+    margin: 0.2rem auto;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    letter-spacing: 0.5px;
+  }
+  
+  h2 {
+    font-size: 1.8em;
+    letter-spacing: 0.5px;
+  }
+  
+  button {
+    padding: 1em;
+    font-size: 0.9em;
+    letter-spacing: 0px;
+  }
+  
+  input[type="input"] {
+    font-size: 0.9em;
+    padding: 1.2em 1em;
+  }
+  
+  /* Stack buttons vertically on very small screens */
+  .form-container > div {
+    gap: 1rem;
+  }
+  
+  /* Reduce background animation intensity on small screens */
+  body::before {
+    background-size: 25px 25px;
+    opacity: 0.7;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  #app {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin: 0.2em 0;
+  }
+  
+  h2 {
+    font-size: 2em;
+    margin: 0.1em 0;
+  }
+  
+  .form-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* iPad Pro and large tablets */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  #app {
+    max-width: 80%;
+    padding: 2.5rem;
+  }
+  
+  h1 {
+    font-size: 2.8em;
+  }
+  
+  h2 {
+    font-size: 3.2em;
+  }
+}
+
+/* Ensure touch targets are accessible */
+@media (pointer: coarse) {
+  button, input {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  button {
+    padding: 1em 1.5em;
+  }
+}

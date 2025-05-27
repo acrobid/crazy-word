@@ -16,32 +16,31 @@ export default defineConfig({
         theme_color: "#ffffff",
         start_url: "/",
         display: "standalone",
-        background_color: "#000000", // Example: black, adjust to your app's background
+        background_color: "#000000",
+        scope: "/",
+        lang: "en",
+        categories: ["games"],
         icons: [
           {
-            src: "android-icon-192x192.png",
+            src: "pwa-64x64.png",
+            sizes: "64x64",
+            type: "image/png",
+          },
+          {
+            src: "pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "pwa-512x512.png", // Assuming you might want a larger PWA icon
+            src: "pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "apple-icon-152x152.png",
-            sizes: "152x152",
+            src: "maskable-icon-512x512.png",
+            sizes: "512x512",
             type: "image/png",
-          },
-          {
-            src: "apple-icon-180x180.png",
-            sizes: "180x180",
-            type: "image/png",
-          },
-          {
-            src: "ms-icon-144x144.png",
-            sizes: "144x144",
-            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },

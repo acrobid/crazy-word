@@ -60,29 +60,23 @@ const reset = () => {
 .page-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; */ /* Centering content is usually better for fluid layouts */
+  justify-content: flex-start;
   align-items: center;
-  gap: clamp(10px, 2vw, 20px); /* Fluid gap */
-  padding: clamp(10px, 3vw, 20px); /* Fluid padding */
+  gap: 10px;
+  padding: 20px;
   width: 100%;
   color: #00ffff;
-  box-sizing: border-box;
 }
-
 .form-container {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  gap: clamp(10px, 2vw, 15px); /* Fluid gap */
-  width: 100%;
-  max-width: 600px; /* Max width for form */
-  justify-content: center;
+  gap: 10px;
 }
 
 .form-container input {
-  padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 16px);
+  padding: 12px 16px;
   border-radius: 8px;
   border: 2px solid #00ffff;
-  font-size: clamp(14px, 2.5vw, 16px); /* Fluid font size */
+  font-size: 16px;
   font-family: "Inter", sans-serif;
   background: rgba(0, 0, 0, 0.5);
   color: #00ffff;
@@ -90,9 +84,6 @@ const reset = () => {
   letter-spacing: 1px;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
-  flex-grow: 1; /* Allow input to grow */
-  min-width: 200px; /* Minimum width before wrapping */
-  box-sizing: border-box;
 }
 
 .form-container input:focus {
@@ -107,20 +98,11 @@ const reset = () => {
   text-transform: uppercase;
 }
 
-/* Styling for the div containing buttons, to help with wrapping */
-.form-container > div {
-  display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap */
-  gap: clamp(8px, 1.5vw, 10px);
-  justify-content: center;
-  flex-grow: 1; /* Allow button container to grow */
-}
-
 .form-container button {
-  padding: clamp(10px, 2vw, 12px) clamp(15px, 2.5vw, 20px);
+  padding: 12px 20px;
   border-radius: 8px;
   border: 2px solid #00ffff;
-  font-size: clamp(14px, 2.5vw, 16px); /* Fluid font size */
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: "Poppins", sans-serif;
@@ -134,9 +116,6 @@ const reset = () => {
   letter-spacing: 1px;
   font-weight: bold;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-  flex-grow: 1; /* Allow buttons to grow */
-  min-width: 120px; /* Minimum width for buttons */
-  box-sizing: border-box;
 }
 
 .form-container button:hover {
@@ -145,26 +124,22 @@ const reset = () => {
   box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
   transform: translateY(-2px);
 }
-
 .colorful {
   color: #00ffff;
-  font-size: clamp(24px, 6vw, 40px); /* Fluid font size */
+  font-size: 40px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.5vw, 2px); /* Fluid letter spacing */
+  letter-spacing: 2px;
   margin: 0;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
   transition: all 0.3s ease;
-  word-break: break-word; /* Prevent overflow */
 }
 
 .colorful:hover {
   color: #ff00ff;
   text-shadow: 0 0 15px rgba(255, 0, 255, 0.8), 0 0 25px rgba(255, 0, 255, 0.4);
 }
-
-/* Keyframes slide and glow-sweep are fine */
 @keyframes slide {
   0% {
     background-position: 0 0;
@@ -175,11 +150,10 @@ const reset = () => {
 }
 .new-word-label {
   color: rgba(255, 255, 255, 0.8);
-  /* font-family: "Orbitron", monospace; */ /* Replaced by Poppins globally, consider if this specific one is needed */
-  font-family: "Poppins", sans-serif;
+  font-family: "Orbitron", monospace;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2.5vw, 16px);
+  padding: 8px 16px;
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 6px;
   background: rgba(0, 0, 0, 0.2);
@@ -211,6 +185,81 @@ const reset = () => {
   }
   100% {
     left: 100%;
+  }
+}
+
+/* Mobile responsive styles for form */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .form-container input {
+    font-size: 18px; /* Prevent zoom on iOS */
+    padding: 1em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .form-container button {
+    padding: 1em;
+    font-size: 16px;
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .colorful {
+    font-size: 28px;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container input {
+    font-size: 16px;
+    padding: 1.2em 1em;
+  }
+
+  .form-container button {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .colorful {
+    font-size: 24px;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .form-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container input {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .form-container > div {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .colorful {
+    font-size: 20px;
   }
 }
 </style>
