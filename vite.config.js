@@ -14,6 +14,9 @@ export default defineConfig({
         short_name: "CrazyWord",
         description: "Crazy Word - a game made in Vue",
         theme_color: "#ffffff",
+        start_url: "/",
+        display: "standalone",
+        background_color: "#000000", // Example: black, adjust to your app's background
         icons: [
           {
             src: "android-icon-192x192.png",
