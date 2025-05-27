@@ -1,11 +1,11 @@
+/* filepath: /Users/joshuacarter/webdev/crazy-word/src/style.css */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a0d2e 25%, #16213e 50%, #0f3460 75%, #533a7d 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,81 +15,147 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #00ffff;
   text-decoration: inherit;
+  text-shadow: 0 0 10px #00ffff;
 }
 a:hover {
-  color: #535bf2;
+  color: #ff00ff;
+  text-shadow: 0 0 15px #ff00ff;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 320px; /* Keep a reasonable minimum */
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding: 1rem; /* Add some base padding */
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Cyberpunk background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: 
+    linear-gradient(45deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%, transparent),
+    linear-gradient(-45deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
+  background-size: clamp(25px, 5vw, 50px) clamp(25px, 5vw, 50px); /* Fluid background size */
+  animation: grid-move 20s linear infinite;
+}
+
+/* Animated grid background */
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(clamp(25px, 5vw, 50px), clamp(25px, 5vw, 50px)); } /* Adjust animation to match fluid size */
+}
+
+/* Synthwave gradient overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 70%);
+  pointer-events: none;
+}
+
+.card {
+  padding: clamp(1em, 2.5vw, 2em); /* Fluid padding */
+}
+
+#app {
+  width: min(100%, 1280px); /* Takes full width up to 1280px */
+  margin: 0 auto;
+  padding: clamp(1rem, 5vw, 2rem); /* Fluid padding */
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: clamp(0px, (100vw - 320px) / (1280 - 320) * 20px, 20px); /* Fluid border radius - 0 on small, 20px on large */
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 
+    0 0 50px rgba(0, 255, 255, 0.1),
+    inset 0 0 50px rgba(255, 0, 255, 0.05);
+  box-sizing: border-box;
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  border: 2px solid #00ffff;
+  padding: clamp(0.6em, 1.5vw, 1em) clamp(1em, 2.5vw, 1.5em); /* Fluid padding */
+  font-size: clamp(0.9em, 2vw, 1.1em); /* Fluid font size */
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+  color: #00ffff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: clamp(0.5px, 0.15vw, 1px); /* Fluid letter spacing */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  min-height: 44px; /* Accessibility */
+  min-width: 44px; /* Accessibility */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ff00ff;
+  color: #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+  transform: translateY(-2px);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:active {
+  transform: translateY(0);
 }
 
 h1 {
-  font-family: 'Nunito', sans-serif;
-  font-size: 4em;
-  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8em, 5vw, 2.5em); /* Fluid font size */
+  font-weight: 700;
+  margin: 0.5em 0;
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.5vw, 3px); /* Fluid letter spacing */
+  color: #00ffff;
+  text-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #00ffff;
+  line-height: 1.2;
 }
 
 h2 {
-  font-family: 'Pacifico', cursive;
-  font-size: 4em;
-  margin: 0px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2em, 6vw, 3em); /* Fluid font size */
+  margin: 0.5em 0;
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.3vw, 2px); /* Fluid letter spacing */
+  color: #ff00ff;
+  text-shadow: 
+    0 0 10px #ff00ff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff;
+  line-height: 1.2;
 }
 
+/* General input styling (can be overridden in components if needed) */
+input[type="input"] {
+    font-size: clamp(0.9em, 2vw, 1.1em); /* Fluid font size */
+    padding: clamp(0.8em, 2vw, 1em); /* Fluid padding */
+    width: 100%; /* Default to full width, parent can constrain */
+    box-sizing: border-box;
+    min-height: 44px; /* Accessibility */
+}
+
+/* Cyberpunk neon colors - original palette */
 .pink {
   color: azure;
   --color1: #ffc9f3;
@@ -109,6 +175,15 @@ h2 {
 }
 
 .neon {
-  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
-    0 0 40px var(--color3), 0 0 80px var(--color4), 0 0 100px var(--color4);
+  /* This effect is hard to make truly fluid without JS or many classes. */
+  /* Keeping the more complex version as a baseline. */
+  /* Could be simplified if it's too much on small screens. */
+  text-shadow: 0 0 7px var(--color1), 0 0 15px var(--color2),
+    0 0 25px var(--color3), 0 0 40px var(--color4), 0 0 50px var(--color4);
 }
+
+/* Styles for .form-container and .word-item would typically be in their respective components */
+/* or defined here if they are truly global utility classes. */
+/* For now, assuming they will be handled/refactored in component-specific styles or are already general enough. */
+
+/* REMOVE ALL MEDIA QUERIES FROM THIS POINT DOWN */

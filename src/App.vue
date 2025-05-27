@@ -1,5 +1,5 @@
 <script setup>
-import CrazyWord from './components/CrazyWord.vue';
+import CrazyWord from "./components/CrazyWord.vue";
 </script>
 
 <template>
@@ -15,16 +15,18 @@ import CrazyWord from './components/CrazyWord.vue';
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 .logo {
   will-change: filter;
   transition: filter 300ms;
+  font-family: "Pacifico", cursive !important;
+  font-size: 4em;
+  margin: 0px;
+  text-transform: none !important;
+  letter-spacing: normal !important;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 1em #646cffff);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 1em #42b883ff);
+  filter: drop-shadow(0 0 2em currentColor);
 }
 </style>
