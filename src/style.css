@@ -31,6 +31,8 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+
+  font-size: clamp(14px, 2.5vw, 18px); /* Fluid font size for body */
 }
 
 /* Cyberpunk background */
@@ -71,6 +73,9 @@ body::after {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+
+  font-size: clamp(1.8em, 5vw, 2.5em); /* Fluid font size for h1 */
+  letter-spacing: clamp(1px, 0.5vw, 3px); /* Fluid letter spacing */
 }
 
 button {
@@ -87,6 +92,9 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+
+  font-size: clamp(0.9em, 2.5vw, 1em); /* Fluid font size for buttons */
+  padding: clamp(0.5em 1em, 2vw 3vw, 0.6em 1.2em); /* Fluid padding */
 }
 button:hover {
   border-color: #ff00ff;
@@ -100,6 +108,8 @@ button:active {
 
 .card {
   padding: 2em;
+
+  padding: clamp(1em, 4vw, 2em);
 }
 
 #app {
@@ -107,13 +117,10 @@ button:active {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  box-shadow: 
-    0 0 50px rgba(0, 255, 255, 0.1),
-    inset 0 0 50px rgba(255, 0, 255, 0.05);
+
+  width: clamp(300px, 90vw, 1280px); /* Fluid width with min/max */
+  padding: clamp(1rem, 5vw, 2rem);    /* Fluid padding */
+  margin: clamp(0.5rem, 2vh, 2rem) auto; /* Fluid vertical margin */
 }
 
 button {
@@ -130,15 +137,9 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-}
-button:hover {
-  border-color: #ff00ff;
-  color: #ff00ff;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-  transform: translateY(-2px);
-}
-button:active {
-  transform: translateY(0);
+
+  font-size: clamp(0.9em, 2.5vw, 1em); /* Fluid font size for buttons */
+  padding: clamp(0.5em 1em, 2vw 3vw, 0.6em 1.2em); /* Fluid padding */
 }
 
 h1 {
@@ -166,6 +167,9 @@ h2 {
     0 0 10px #ff00ff,
     0 0 20px #ff00ff,
     0 0 30px #ff00ff;
+
+  font-size: clamp(2em, 6vw, 3em); /* Fluid font size for h2 */
+  letter-spacing: clamp(1px, 0.5vw, 2px); /* Fluid letter spacing */
 }
 
 /* Cyberpunk neon colors - original palette */
@@ -192,207 +196,72 @@ h2 {
     0 0 40px var(--color3), 0 0 80px var(--color4), 0 0 100px var(--color4);
 }
 
-/* =================== MOBILE RESPONSIVE =================== */
-
-/* Tablet/iPad styles (768px - 1024px) */
-@media (max-width: 1024px) {
-  #app {
-    max-width: 90%;
-    padding: 1.5rem;
-    margin: 1rem auto;
-  }
-  
-  h1 {
-    font-size: 2.2em;
-    letter-spacing: 2px;
-  }
-  
-  h2 {
-    font-size: 2.5em;
-    letter-spacing: 1.5px;
-  }
-  
-  button {
-    padding: 0.7em 1.4em;
-    font-size: 1.1em;
-  }
-  
-  .form-container {
-    gap: 1rem;
-  }
-  
-  input[type="input"] {
-    font-size: 1.1em;
-    padding: 0.8em;
-  }
-}
-
-/* Mobile phone styles (320px - 768px) */
-@media (max-width: 768px) {
-  body {
-    min-width: 100%;
-    padding: 0;
-  }
-  
-  #app {
-    max-width: 95%;
-    padding: 1rem;
-    margin: 0.5rem auto;
-    border-radius: 15px;
-  }
-  
-  h1 {
-    font-size: 1.8em;
-    letter-spacing: 1px;
-    margin: 0.3em 0;
-  }
-  
-  h2 {
-    font-size: 2em;
-    letter-spacing: 1px;
-    margin: 0.2em 0;
-  }
-  
-  button {
-    padding: 0.8em 1.2em;
-    font-size: 1em;
-    letter-spacing: 0.5px;
-    min-height: 48px; /* Touch-friendly minimum */
-  }
-  
-  .form-container {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-  }
-  
-  .form-container > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  
-  input[type="input"] {
-    font-size: 1em;
-    padding: 1em;
-    min-height: 48px; /* Touch-friendly minimum */
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .card {
-    padding: 1em;
-  }
-  
-  /* Make word list items more touch-friendly */
-  .word-item {
-    padding: 1rem;
-    margin: 0.5rem 0;
-    font-size: 1.1em;
-  }
-  
-  /* Adjust cyberpunk background for mobile */
-  body::before {
-    background-size: 30px 30px;
-  }
-  
-  /* Reduce neon effects on mobile for better readability */
-  .neon {
-    text-shadow: 0 0 5px var(--color1), 0 0 10px var(--color2),
-      0 0 20px var(--color3), 0 0 40px var(--color4);
-  }
-}
-
-/* Small phone styles (320px - 480px) */
-@media (max-width: 480px) {
-  #app {
-    max-width: 98%;
-    padding: 0.8rem;
-    margin: 0.2rem auto;
-  }
-  
-  h1 {
-    font-size: 1.5em;
-    letter-spacing: 0.5px;
-  }
-  
-  h2 {
-    font-size: 1.8em;
-    letter-spacing: 0.5px;
-  }
-  
-  button {
-    padding: 1em;
-    font-size: 0.9em;
-    letter-spacing: 0px;
-  }
-  
-  input[type="input"] {
-    font-size: 0.9em;
-    padding: 1.2em 1em;
-  }
-  
-  /* Stack buttons vertically on very small screens */
-  .form-container > div {
-    gap: 1rem;
-  }
-  
-  /* Reduce background animation intensity on small screens */
-  body::before {
-    background-size: 25px 25px;
-    opacity: 0.7;
-  }
-}
-
-/* Landscape orientation adjustments */
-@media (max-height: 600px) and (orientation: landscape) {
-  #app {
-    padding: 1rem;
-  }
-  
-  h1 {
-    font-size: 1.8em;
-    margin: 0.2em 0;
-  }
-  
-  h2 {
-    font-size: 2em;
-    margin: 0.1em 0;
-  }
-  
-  .form-container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-}
-
-/* iPad Pro and large tablets */
-@media (min-width: 1024px) and (max-width: 1366px) {
-  #app {
-    max-width: 80%;
-    padding: 2.5rem;
-  }
-  
-  h1 {
-    font-size: 2.8em;
-  }
-  
-  h2 {
-    font-size: 3.2em;
-  }
-}
-
-/* Ensure touch targets are accessible */
+/* Ensure touch targets are accessible for coarse pointers (touchscreens) */
 @media (pointer: coarse) {
-  button, input {
-    min-height: 44px;
-    min-width: 44px;
+  button,
+  input[type="input"] {
+    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;  /* Minimum touch target size */
+    padding: 0.8em 1em; /* Adjust padding for better touch interaction */
   }
-  
-  button {
-    padding: 1em 1.5em;
+
+  input[type="input"] {
+    font-size: 16px; /* Prevent auto-zoom on focus on some mobile browsers */
+  }
+}
+
+/* General responsive adjustments for smaller viewports using flex and viewport units */
+/* No specific breakpoints, allowing for fluid resizing */
+
+body {
+  /* ... existing body styles ... */
+  font-size: clamp(14px, 2.5vw, 18px); /* Fluid font size for body */
+}
+
+#app {
+  /* ... existing #app styles ... */
+  width: clamp(300px, 90vw, 1280px); /* Fluid width with min/max */
+  padding: clamp(1rem, 5vw, 2rem);    /* Fluid padding */
+  margin: clamp(0.5rem, 2vh, 2rem) auto; /* Fluid vertical margin */
+}
+
+h1 {
+  /* ... existing h1 styles ... */
+  font-size: clamp(1.8em, 5vw, 2.5em); /* Fluid font size for h1 */
+  letter-spacing: clamp(1px, 0.5vw, 3px); /* Fluid letter spacing */
+}
+
+h2 {
+  /* ... existing h2 styles ... */
+  font-size: clamp(2em, 6vw, 3em); /* Fluid font size for h2 */
+  letter-spacing: clamp(1px, 0.5vw, 2px); /* Fluid letter spacing */
+}
+
+button {
+  /* ... existing button styles ... */
+  font-size: clamp(0.9em, 2.5vw, 1em); /* Fluid font size for buttons */
+  padding: clamp(0.5em 1em, 2vw 3vw, 0.6em 1.2em); /* Fluid padding */
+}
+
+input[type="input"] {
+  /* Styles for input are primarily in CrazyWord.vue, but if global ones exist, they can be made fluid too */
+  font-size: clamp(0.9em, 2.5vw, 1em);
+  padding: clamp(0.6em, 2vw, 0.8em);
+}
+
+.card {
+  padding: clamp(1em, 4vw, 2em);
+}
+
+/* Adjust cyberpunk background for smaller screens - can still be useful */
+@media (max-width: 768px) { /* A single breakpoint for very specific small screen adjustments if needed */
+  body::before {
+    background-size: 30px 30px; /* Slightly smaller grid */
+  }
+
+  .neon {
+    /* Slightly reduced neon for smaller screens if it's too overwhelming */
+    text-shadow: 0 0 5px var(--color1), 0 0 10px var(--color2),
+      0 0 20px var(--color3), 0 0 30px var(--color4);
   }
 }

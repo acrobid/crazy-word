@@ -60,24 +60,31 @@ const reset = () => {
 .page-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  padding: 20px;
+  align-items: center; /* Center items horizontally */
+  gap: clamp(10px, 3vw, 20px); /* Fluid gap */
+  padding: clamp(10px, 5vw, 20px); /* Fluid padding */
   width: 100%;
-  color: #00ffff;
-}
-.form-container {
-  display: flex;
-  gap: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
-.form-container input {
-  padding: 12px 16px;
+.form-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: center; /* Center items when they wrap */
+  gap: clamp(10px, 2vw, 15px); /* Fluid gap */
+  width: 100%;
+  max-width: 600px; /* Optional: constrain max width of form */
+}
+
+.form-container input[type="input"] {
+  flex-grow: 1; /* Allow input to grow and take available space */
+  min-width: 200px; /* Prevent input from becoming too small */
+  width: 100%; /* Added to help with width issues on mobile */
+  box-sizing: border-box; /* Crucial for width calculation */
+  padding: clamp(10px, 2.5vw, 12px) clamp(12px, 3vw, 16px);
+  font-size: clamp(14px, 3vw, 16px); /* Fluid font size */
   border-radius: 8px;
   border: 2px solid #00ffff;
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
   background: rgba(0, 0, 0, 0.5);
   color: #00ffff;
   text-transform: uppercase;
@@ -86,26 +93,34 @@ const reset = () => {
   transition: all 0.3s ease;
 }
 
-.form-container input:focus {
+.form-container input[type="input"]:focus {
   outline: none;
   border-color: #ff00ff;
   color: #ff00ff;
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.form-container input::placeholder {
+.form-container input[type="input"]::placeholder {
   color: rgba(0, 255, 255, 0.5);
   text-transform: uppercase;
 }
 
+.form-container > div {
+  /* This div wraps the buttons */
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap */
+  gap: clamp(8px, 2vw, 10px); /* Fluid gap for buttons */
+  flex-grow: 1; /* Allow button container to grow if needed */
+  justify-content: center; /* Center buttons */
+}
+
 .form-container button {
-  padding: 12px 20px;
+  flex-grow: 1; /* Allow buttons to grow */
+  min-width: 120px; /* Minimum width for buttons */
+  padding: clamp(10px, 2.5vw, 12px) clamp(15px, 3vw, 20px);
+  font-size: clamp(14px, 3vw, 16px); /* Fluid font size */
   border-radius: 8px;
   border: 2px solid #00ffff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Poppins", sans-serif;
   background: linear-gradient(
     45deg,
     rgba(0, 255, 255, 0.1),
@@ -116,6 +131,7 @@ const reset = () => {
   letter-spacing: 1px;
   font-weight: bold;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
 .form-container button:hover {
@@ -126,12 +142,13 @@ const reset = () => {
 }
 .colorful {
   color: #00ffff;
-  font-size: 40px;
+  font-size: clamp(24px, 7vw, 40px); /* Fluid font size */
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
+  word-break: break-word; /* Prevent overflow */
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
   transition: all 0.3s ease;
 }
@@ -188,78 +205,35 @@ const reset = () => {
   }
 }
 
-/* Mobile responsive styles for form */
-@media (max-width: 768px) {
+/* Fluid and Flexbox based responsive styles for form */
+
+/* Specific adjustments for very small screens if flex-wrap isn't enough */
+@media (max-width: 400px) {
   .form-container {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
+    flex-direction: column; /* Stack input and button container */
+    align-items: stretch; /* Make children full width */
   }
 
-  .form-container input {
-    font-size: 18px; /* Prevent zoom on iOS */
-    padding: 1em;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
+  .form-container input[type="input"],
   .form-container > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    width: 100%;
+    width: 100%; /* Ensure they take full width */
   }
 
   .form-container button {
-    padding: 1em;
-    font-size: 16px;
-    width: 100%;
-    min-height: 48px;
+    width: 100%; /* Make buttons full width if they are in their own container or directly in form */
+    margin-bottom: 8px; /* Add some space if they stack */
   }
-
-  .colorful {
-    font-size: 28px;
-    word-break: break-word;
+  .form-container > div button:last-child {
+    margin-bottom: 0;
   }
 }
 
-@media (max-width: 480px) {
-  .form-container input {
-    font-size: 16px;
-    padding: 1.2em 1em;
+button {
+  @starting-style {
+    transform: translateX(-80px);
+    opacity: 0;
   }
 
-  .form-container button {
-    font-size: 14px;
-    letter-spacing: 0.5px;
-  }
-
-  .colorful {
-    font-size: 24px;
-  }
-}
-
-/* Landscape orientation for mobile */
-@media (max-height: 600px) and (orientation: landscape) {
-  .form-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .form-container input {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .form-container > div {
-    flex-direction: row;
-    gap: 0.5rem;
-  }
-
-  .colorful {
-    font-size: 20px;
-  }
+  transition: opacity 1s, transform 2s;
 }
 </style>
